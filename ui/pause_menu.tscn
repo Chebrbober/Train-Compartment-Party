@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bdvta442igmoq" path="res://ui/pause_menu.gd" id="1_ejwgg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jo5lq"]
-font_size = 48
+font_size = 32
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1891448500]
 process_mode = 3
@@ -35,10 +35,10 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=568105700]
 layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1967121512]
 layout_mode = 2
@@ -48,17 +48,19 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Paused"
 label_settings = SubResource("LabelSettings_jo5lq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=293017930]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Resume"
 script = ExtResource("1_50142")
 metadata/_custom_type_script = "uid://46gikvmtn4cp"
 
 [node name="Main Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=582944361]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 script = ExtResource("1_50142")
 metadata/_custom_type_script = "uid://46gikvmtn4cp"
