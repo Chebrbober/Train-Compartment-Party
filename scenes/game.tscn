@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://iolp4xh251hy"]
+
+[ext_resource type="PackedScene" uid="uid://cogiqpnxstijp" path="res://ui/pause_menu.tscn" id="1_uwrxv"]
+
+[node name="Game" type="Node2D" unique_id=1796160669]
+
+[node name="PauseMenu" parent="." unique_id=1891448500 instance=ExtResource("1_uwrxv")]

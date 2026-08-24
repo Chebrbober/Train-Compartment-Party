@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwym3c7jyp6px"]
+
+[ext_resource type="Script" uid="uid://46gikvmtn4cp" path="res://ui/button_effects_module.gd" id="1_xa4a8"]
+
+[node name="AnimatedButton" type="Button" unique_id=1139159196]
+offset_right = 8.0
+offset_bottom = 31.0
+text = "
+"
+script = ExtResource("1_xa4a8")
