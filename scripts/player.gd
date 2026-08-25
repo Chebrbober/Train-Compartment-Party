@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 100
 @onready var body: CanvasGroup = $Body
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var camera: Camera2D = $Camera2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var move_on_y_axis: bool = false
 

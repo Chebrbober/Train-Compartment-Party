@@ -16,13 +16,9 @@ func _ready() -> void:
 	InteractManager.register_interactable(self)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body entered ", body.name)
 	if body.is_in_group("player") or body is CharacterBody2D:
-		print('that was player')
 		player_entered.emit(self)
 
 func _on_body_exited(body: Node2D) -> void:
-	print("body exited", body.name)
 	if body.is_in_group("player") or body is CharacterBody2D:
-		print('that was player')
 		player_exited.emit(self)

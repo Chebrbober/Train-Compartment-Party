@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cas5ldergjmj5" path="res://assets/sprites/train/train(Bar) _0001.png" id="10_d8wpw"]
 [ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="11_tfkm3"]
 [ext_resource type="PackedScene" uid="uid://7daox3vgvaak" path="res://scenes/compartment.tscn" id="13_tfkm3"]
+[ext_resource type="Shader" uid="uid://egwonsg1l68r" path="res://scripts/fish_eye.gdshader" id="14_bbvoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31djl"]
 size = Vector2(21, 30)
@@ -38,10 +39,18 @@ size = Vector2(4, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx4d"]
 size = Vector2(4, 39)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dguew"]
+shader = ExtResource("14_bbvoe")
+shader_parameter/fish_intensity = 1.0
+
 [node name="Train" type="Node2D" unique_id=1295495881]
 script = ExtResource("1_ti6s8")
 
+[node name="Compartment" parent="." unique_id=600791262 instance=ExtResource("13_tfkm3")]
+visible = false
+
 [node name="TrainGroup" type="CanvasGroup" parent="." unique_id=500970856]
+unique_name_in_owner = true
 
 [node name="Outside" type="Node2D" parent="TrainGroup" unique_id=986760341]
 
@@ -142,6 +151,7 @@ texture = ExtResource("6_1kvv8")
 texture = ExtResource("7_risb3")
 
 [node name="Inside" type="Node2D" parent="TrainGroup" unique_id=524496893]
+unique_name_in_owner = true
 
 [node name="Corridor" type="Sprite2D" parent="TrainGroup/Inside" unique_id=1790804229]
 position = Vector2(-173, -24)
@@ -293,5 +303,19 @@ position = Vector2(124.5, -4)
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_6kx4d")
 
-[node name="Compartment" parent="." unique_id=600791262 instance=ExtResource("13_tfkm3")]
+[node name="PeepholeCamera" type="Camera2D" parent="TrainGroup" unique_id=398954506]
+unique_name_in_owner = true
+position = Vector2(-100, -4)
+enabled = false
+zoom = Vector2(8.5, 8.5)
+
+[node name="FishEye" type="CanvasLayer" parent="." unique_id=2028018895]
+unique_name_in_owner = true
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="FishEye" unique_id=1103945685]
+material = SubResource("ShaderMaterial_dguew")
+offset_left = -138.0
+offset_top = -26.0
+offset_right = -62.0
+offset_bottom = 18.0
