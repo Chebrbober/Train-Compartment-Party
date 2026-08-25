@@ -1,7 +1,7 @@
 extends Node
 
 @export var interact_button: AnimatedSprite2D
-@export var button_y_offset: float = 30
+@export var button_y_offset: float = 25
 @export var tween_duration: float = 0.25
 var current_interactable
 var tween: Tween

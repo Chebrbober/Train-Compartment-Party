@@ -5,3 +5,6 @@ extends Node
 
 func move_player_to_spawn() -> void:
 	player.global_position = spawn_marker.global_position
+
+func peep_through_peephole() -> void:
+	pass

@@ -106,12 +106,13 @@ position = Vector2(312, 264)
 texture = ExtResource("4_jnh6r")
 
 [node name="Interactable" type="Area2D" parent="Stairs" unique_id=1955066399]
-position = Vector2(312, 248)
+position = Vector2(312, 264)
 collision_mask = 2
 script = ExtResource("5_k4cyq")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/Interactable" unique_id=820464086]
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_jo5lq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Stairs" unique_id=33893312]
