@@ -1,5 +1,289 @@
 [gd_scene format=3 uid="uid://brey5wiqkn7rx"]
 
+[ext_resource type="Texture2D" uid="uid://c88i33w74kvb1" path="res://assets/sprites/train/train(Bottom Layer) _0001.png" id="1_m4isg"]
+[ext_resource type="Texture2D" uid="uid://d0jscv5onkfbx" path="res://assets/sprites/train/train(Papers) _0001.png" id="2_g7hjf"]
+[ext_resource type="Texture2D" uid="uid://n4lk7o67npkx" path="res://assets/sprites/train/train(Joints Background) _0001.png" id="3_ti6s8"]
+[ext_resource type="Texture2D" uid="uid://bng0pde5b208h" path="res://assets/sprites/train/train(Wheels) _0001.png" id="4_tfkm3"]
+[ext_resource type="Texture2D" uid="uid://8213i1ljb4gd" path="res://assets/sprites/train/train(Joints Foreground) _0001.png" id="5_bbvoe"]
+[ext_resource type="Texture2D" uid="uid://tysie7jni0lv" path="res://assets/sprites/train/train(Spring) _0001.png" id="6_1kvv8"]
+[ext_resource type="Texture2D" uid="uid://b60yp788b0udm" path="res://assets/sprites/train/train(Body) _0001.png" id="7_risb3"]
+[ext_resource type="Texture2D" uid="uid://05h5dcrwpw7t" path="res://assets/sprites/train/train(Corridor) _0001.png" id="8_5wkan"]
+[ext_resource type="Texture2D" uid="uid://dhhnc3yfolmae" path="res://assets/sprites/train/train(Compartment Door) _0001.png" id="9_r2kyi"]
+[ext_resource type="Texture2D" uid="uid://cas5ldergjmj5" path="res://assets/sprites/train/train(Bar) _0001.png" id="10_d8wpw"]
+[ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="11_tfkm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31djl"]
+size = Vector2(21, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c7yp"]
+size = Vector2(21, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7t1r"]
+size = Vector2(21, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1rm"]
+size = Vector2(21.25, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q27c7"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo5lq"]
+size = Vector2(296, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dguew"]
+size = Vector2(1, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx4d"]
+size = Vector2(1, 39)
+
 [node name="Train" type="Node2D" unique_id=1295495881]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1515520040]
+[node name="TrainGroup" type="CanvasGroup" parent="." unique_id=500970856]
+
+[node name="Outside" type="Node2D" parent="TrainGroup" unique_id=986760341]
+
+[node name="BottomLayer" type="Sprite2D" parent="TrainGroup/Outside" unique_id=585199046]
+position = Vector2(-20, 21)
+texture = ExtResource("1_m4isg")
+
+[node name="RightPairOfWheels" type="Node2D" parent="TrainGroup/Outside" unique_id=220220851]
+
+[node name="Papers" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels" unique_id=741818951]
+position = Vector2(-1, 10)
+texture = ExtResource("2_g7hjf")
+centered = false
+
+[node name="FirstPart" type="Node2D" parent="TrainGroup/Outside/RightPairOfWheels" unique_id=631446622]
+
+[node name="JointsBackground" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/FirstPart" unique_id=1149564051]
+position = Vector2(114, 20)
+texture = ExtResource("3_ti6s8")
+
+[node name="Wheel" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/FirstPart" unique_id=137943884]
+position = Vector2(105, 11)
+texture = ExtResource("4_tfkm3")
+centered = false
+
+[node name="JointsForeground" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/FirstPart" unique_id=627106825]
+position = Vector2(91, 10)
+texture = ExtResource("5_bbvoe")
+centered = false
+
+[node name="SecondPart" type="Node2D" parent="TrainGroup/Outside/RightPairOfWheels" unique_id=1982813403]
+position = Vector2(-60, 0)
+
+[node name="JointsBackground" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/SecondPart" unique_id=1986838885]
+position = Vector2(114, 20)
+texture = ExtResource("3_ti6s8")
+
+[node name="Wheel" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/SecondPart" unique_id=746637418]
+position = Vector2(105, 11)
+texture = ExtResource("4_tfkm3")
+centered = false
+
+[node name="JointsForeground" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels/SecondPart" unique_id=887981328]
+position = Vector2(91, 10)
+texture = ExtResource("5_bbvoe")
+centered = false
+
+[node name="Spring" type="Sprite2D" parent="TrainGroup/Outside/RightPairOfWheels" unique_id=768179010]
+position = Vector2(84, 19)
+texture = ExtResource("6_1kvv8")
+
+[node name="LeftPairOfWheels" type="Node2D" parent="TrainGroup/Outside" unique_id=1026885309]
+position = Vector2(-166, 0)
+
+[node name="Papers" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels" unique_id=1998337335]
+position = Vector2(-1, 10)
+texture = ExtResource("2_g7hjf")
+centered = false
+
+[node name="FirstPart" type="Node2D" parent="TrainGroup/Outside/LeftPairOfWheels" unique_id=274954267]
+
+[node name="JointsBackground" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/FirstPart" unique_id=1577881577]
+position = Vector2(114, 20)
+texture = ExtResource("3_ti6s8")
+
+[node name="Wheel" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/FirstPart" unique_id=751262478]
+position = Vector2(105, 11)
+texture = ExtResource("4_tfkm3")
+centered = false
+
+[node name="JointsForeground" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/FirstPart" unique_id=1073182114]
+position = Vector2(91, 10)
+texture = ExtResource("5_bbvoe")
+centered = false
+
+[node name="SecondPart" type="Node2D" parent="TrainGroup/Outside/LeftPairOfWheels" unique_id=176597867]
+position = Vector2(-60, 0)
+
+[node name="JointsBackground" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/SecondPart" unique_id=1150506447]
+position = Vector2(114, 20)
+texture = ExtResource("3_ti6s8")
+
+[node name="Wheel" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/SecondPart" unique_id=540355607]
+position = Vector2(105, 11)
+texture = ExtResource("4_tfkm3")
+centered = false
+
+[node name="JointsForeground" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels/SecondPart" unique_id=1613805643]
+position = Vector2(91, 10)
+texture = ExtResource("5_bbvoe")
+centered = false
+
+[node name="Spring" type="Sprite2D" parent="TrainGroup/Outside/LeftPairOfWheels" unique_id=1289256338]
+position = Vector2(84, 19)
+texture = ExtResource("6_1kvv8")
+
+[node name="Body" type="Sprite2D" parent="TrainGroup/Outside" unique_id=1240146241]
+texture = ExtResource("7_risb3")
+
+[node name="Inside" type="Node2D" parent="TrainGroup" unique_id=524496893]
+
+[node name="Corridor" type="Sprite2D" parent="TrainGroup/Inside" unique_id=1790804229]
+position = Vector2(-173, -24)
+texture = ExtResource("8_5wkan")
+centered = false
+
+[node name="CompartmentOne" type="Node2D" parent="TrainGroup/Inside" unique_id=1844592851]
+unique_name_in_owner = true
+position = Vector2(60, 0)
+
+[node name="CompartmentDoor" type="Sprite2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=1339830310]
+position = Vector2(0, -4)
+texture = ExtResource("9_r2kyi")
+
+[node name="Bar" type="Sprite2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=1281193279]
+position = Vector2(-20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Bar2" type="Sprite2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=1070528377]
+position = Vector2(20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=685546785 groups=["interactables"]]
+collision_mask = 2
+script = ExtResource("11_tfkm3")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/CompartmentOne/Interactable" unique_id=1767150183]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_31djl")
+
+[node name="CompartmentTwo" type="Node2D" parent="TrainGroup/Inside" unique_id=709828053]
+unique_name_in_owner = true
+position = Vector2(7.5, 0)
+
+[node name="CompartmentDoor" type="Sprite2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=678943373]
+position = Vector2(0, -4)
+texture = ExtResource("9_r2kyi")
+
+[node name="Bar" type="Sprite2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=251043951]
+position = Vector2(-20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Bar2" type="Sprite2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=1046049782]
+position = Vector2(20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=363461566 groups=["interactables"]]
+collision_mask = 2
+script = ExtResource("11_tfkm3")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/CompartmentTwo/Interactable" unique_id=1763705729]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_6c7yp")
+
+[node name="CompartmentThree" type="Node2D" parent="TrainGroup/Inside" unique_id=475543325]
+unique_name_in_owner = true
+position = Vector2(-47.5, 0)
+
+[node name="CompartmentDoor" type="Sprite2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=643724537]
+position = Vector2(0, -4)
+texture = ExtResource("9_r2kyi")
+
+[node name="Bar" type="Sprite2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=821581339]
+position = Vector2(-20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Bar2" type="Sprite2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=552947106]
+position = Vector2(20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=2113707453 groups=["interactables"]]
+collision_mask = 2
+script = ExtResource("11_tfkm3")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/CompartmentThree/Interactable" unique_id=1363939161]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_a7t1r")
+
+[node name="CompartmentFour" type="Node2D" parent="TrainGroup/Inside" unique_id=1322460391]
+unique_name_in_owner = true
+position = Vector2(-99.5, 0)
+
+[node name="CompartmentDoor" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=1408096913]
+position = Vector2(0, -4)
+texture = ExtResource("9_r2kyi")
+
+[node name="Bar" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=138412150]
+position = Vector2(-20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Bar2" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=1905317329]
+position = Vector2(20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=569417653 groups=["interactables"]]
+collision_mask = 2
+script = ExtResource("11_tfkm3")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/CompartmentFour/Interactable" unique_id=1406365339]
+position = Vector2(-0.125, -4)
+shape = SubResource("RectangleShape2D_yy1rm")
+
+[node name="CompartmentFive" type="Node2D" parent="TrainGroup/Inside" unique_id=1190011020]
+unique_name_in_owner = true
+position = Vector2(-150, 0)
+
+[node name="CompartmentDoor" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=1230664100]
+position = Vector2(0, -4)
+texture = ExtResource("9_r2kyi")
+
+[node name="Bar" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=891049036]
+position = Vector2(-20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Bar2" type="Sprite2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=49990075]
+position = Vector2(20, -4)
+texture = ExtResource("10_d8wpw")
+
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=564425117 groups=["interactables"]]
+collision_mask = 2
+script = ExtResource("11_tfkm3")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/CompartmentFive/Interactable" unique_id=1822332967]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_q27c7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TrainGroup/Inside" unique_id=1321690659]
+position = Vector2(-24, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D" unique_id=1678187274]
+shape = SubResource("RectangleShape2D_jo5lq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="TrainGroup/Inside" unique_id=1361316388]
+position = Vector2(-172.5, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D2" unique_id=794157147]
+shape = SubResource("RectangleShape2D_dguew")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="TrainGroup/Inside" unique_id=1389821841]
+position = Vector2(124.5, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D3" unique_id=1021861954]
+shape = SubResource("RectangleShape2D_6kx4d")

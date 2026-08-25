@@ -2,10 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://cogiqpnxstijp" path="res://ui/pause_menu.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dkl3weee68qms" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://brey5wiqkn7rx" path="res://scenes/train.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://7daox3vgvaak" path="res://scenes/compartment.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D" unique_id=1796160669]
 
 [node name="PauseMenu" parent="." unique_id=1891448500 instance=ExtResource("1_uwrxv")]
+visible = false
+
+[node name="Train" parent="." unique_id=1295495881 instance=ExtResource("3_lnu2h")]
+position = Vector2(280, 149)
 
 [node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
 position = Vector2(206, 143)
+
+[node name="Compartment" parent="." unique_id=600791262 instance=ExtResource("4_lbhrr")]

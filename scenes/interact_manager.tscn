@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b11qua7f71ehy"]
+
+[ext_resource type="Script" uid="uid://c8ahbld7e0bmd" path="res://scripts/interact_manager.gd" id="1_knh7v"]
+[ext_resource type="Texture2D" uid="uid://xds0peb7iakp" path="res://assets/sprites/interact_key_spritesheet.png" id="2_q4pqs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wkan"]
+atlas = ExtResource("2_q4pqs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2kyi"]
+atlas = ExtResource("2_q4pqs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo5lq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wkan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2kyi")
+}],
+"loop": 0,
+"name": &"pressed",
+"speed": 10.0
+}]
+
+[node name="InteractManager" type="Node" unique_id=299061467 node_paths=PackedStringArray("interact_button")]
+script = ExtResource("1_knh7v")
+interact_button = NodePath("InteractButton")
+metadata/_custom_type_script = "uid://c8ahbld7e0bmd"
+
+[node name="InteractButton" type="AnimatedSprite2D" parent="." unique_id=177844977]
+top_level = true
+z_index = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jo5lq")
+animation = &"pressed"
+frame = 1
+frame_progress = 1.0
