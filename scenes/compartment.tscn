@@ -1,14 +1,122 @@
-[gd_scene format=3 uid="uid://7daox3vgvaak"]
+[gd_scene format=4 uid="uid://7daox3vgvaak"]
+
+[ext_resource type="Texture2D" uid="uid://qfiykmm0elt7" path="res://assets/sprites/train/compartment_tileset.png" id="1_cek7t"]
+[ext_resource type="Script" uid="uid://c7k7o2qeyhime" path="res://scripts/compartment.gd" id="1_lw248"]
+[ext_resource type="Texture2D" uid="uid://csmq1smckfdux" path="res://assets/sprites/train/border_tileset.png" id="2_lw248"]
+[ext_resource type="Texture2D" uid="uid://c2k8siyc8morx" path="res://assets/sprites/train/stairs.png" id="4_jnh6r"]
+[ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="5_k4cyq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jnh6r"]
+texture = ExtResource("1_cek7t")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k4cyq"]
+texture = ExtResource("2_lw248")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_jo5lq"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Borders"
+terrain_set_0/terrain_0/color = Color(0.5019608, 0.8509804, 0.2509804, 1)
+sources/0 = SubResource("TileSetAtlasSource_jnh6r")
+sources/1 = SubResource("TileSetAtlasSource_k4cyq")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo5lq"]
+radius = 16.03122
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4cyq"]
+size = Vector2(32, 32)
 
 [node name="Compartment" type="Node2D" unique_id=600791262]
+script = ExtResource("1_lw248")
 
-[node name="Background" type="CanvasLayer" parent="." unique_id=555552025]
-visible = false
+[node name="SpawnMarker" type="Marker2D" parent="." unique_id=727371479]
+position = Vector2(312, 225)
 
-[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1198485905]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1198485905]
+custom_minimum_size = Vector2(5000, 5000)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 3380.0
+offset_bottom = 2788.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Case" type="TileMapLayer" parent="." unique_id=1859407749]
+tile_map_data = PackedByteArray("AAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAQAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAARAA4AAAAAAAAAAAARAA0AAAAAAAAAAAARAAwAAAAAAAAAAAARAAsAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAASAAgAAAAAAAAAAAASAAcAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAATAA0AAAAAAAAAAAATAAwAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA0AAAAAAAAAAAAWAAwAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA0AAAAAAAAAAAAXAAwAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAgAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAYAA4AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAARAA8AAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAVABAAAAAAAAAAAAAUABAAAAAAAAAAAAATABAAAAAAAAAAAAASABAAAAAAAAAAAAARABAAAAAAAAAAAAAOAAYAAAAAAAEAAAAOAAUAAAABAAAAAAAOAAQAAAABAAAAAAAPAAQAAAABAAAAAAAPAAUAAAABAAAAAAAPAAYAAAAAAAEAAAAQAAQAAAABAAAAAAAQAAUAAAABAAAAAAAQAAYAAAAAAAEAAAARAAUAAAABAAAAAAARAAQAAAABAAAAAAARAAYAAAAAAAEAAAASAAYAAAAAAAEAAAASAAUAAAABAAAAAAASAAQAAAABAAAAAAATAAYAAAAAAAEAAAATAAUAAAABAAAAAAATAAQAAAABAAAAAAAUAAUAAAABAAAAAAAUAAYAAAAAAAEAAAAUAAQAAAABAAAAAAAVAAUAAAABAAAAAAAVAAYAAAAAAAEAAAAVAAQAAAABAAAAAAAWAAUAAAABAAAAAAAWAAYAAAAAAAEAAAAWAAQAAAABAAAAAAAXAAUAAAABAAAAAAAXAAYAAAAAAAEAAAAXAAQAAAABAAAAAAAYAAQAAAABAAAAAAAYAAUAAAABAAAAAAAYAAYAAAAAAAEAAAAXAAcAAAAAAAAAAAANABAAAQAAAAEAAAANAA8AAQAAAAEAAAANAA4AAQAAAAEAAAANAA0AAQAAAAEAAAANAAwAAQAAAAEAAAANAAsAAQAAAAEAAAANAAoAAQAAAAEAAAANAAkAAQAAAAEAAAANAAgAAQAAAAEAAAANAAcAAQAAAAEAAAANAAYAAQAAAAEAAAANAAUAAQAAAAEAAAANAAQAAQAAAAEAAAANAAMAAQAAAAAAAAAOAAMAAQABAAAAAAAPAAMAAQABAAAAAAAQAAMAAQABAAAAAAARAAMAAQABAAAAAAASAAMAAQABAAAAAAATAAMAAQABAAAAAAAUAAMAAQABAAAAAAAVAAMAAQABAAAAAAAWAAMAAQABAAAAAAAXAAMAAQABAAAAAAAYAAMAAQABAAAAAAAZAAMAAQACAAAAAAAZAAQAAQACAAEAAAAZAAUAAQACAAEAAAAZAAYAAQACAAEAAAAZAAcAAQACAAEAAAAZAAgAAQACAAEAAAAZAAkAAQACAAEAAAAZAAsAAQACAAEAAAAZAAwAAQACAAEAAAAZAA0AAQACAAEAAAAZAA4AAQACAAEAAAAZAA8AAQACAAEAAAAZAAoAAQACAAEAAAAZABAAAQACAAEAAAAZABEAAQACAAIAAAAYABEAAQABAAIAAAAXABEAAQABAAIAAAAWABEAAQABAAIAAAAVABEAAQABAAIAAAAUABEAAQABAAIAAAATABEAAQABAAIAAAASABEAAQABAAIAAAARABEAAQABAAIAAAAQABEAAQABAAIAAAAPABEAAQABAAIAAAAOABEAAQABAAIAAAANABEAAQAAAAIAAAA=")
+tile_set = SubResource("TileSet_jo5lq")
+
+[node name="Stairs" type="Node2D" parent="." unique_id=133286254]
+
+[node name="Sprite2D" type="Sprite2D" parent="Stairs" unique_id=1434448438]
+position = Vector2(312, 264)
+texture = ExtResource("4_jnh6r")
+
+[node name="Interactable" type="Area2D" parent="Stairs" unique_id=1955066399]
+position = Vector2(312, 248)
+collision_mask = 2
+script = ExtResource("5_k4cyq")
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/Interactable" unique_id=820464086]
+shape = SubResource("CircleShape2D_jo5lq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Stairs" unique_id=33893312]
+position = Vector2(312, 264)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/StaticBody2D" unique_id=1296435414]
+shape = SubResource("RectangleShape2D_k4cyq")

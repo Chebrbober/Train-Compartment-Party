@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://brey5wiqkn7rx"]
 
 [ext_resource type="Texture2D" uid="uid://c88i33w74kvb1" path="res://assets/sprites/train/train(Bottom Layer) _0001.png" id="1_m4isg"]
+[ext_resource type="Script" uid="uid://cavqsa4ge8km7" path="res://scripts/train.gd" id="1_ti6s8"]
 [ext_resource type="Texture2D" uid="uid://d0jscv5onkfbx" path="res://assets/sprites/train/train(Papers) _0001.png" id="2_g7hjf"]
 [ext_resource type="Texture2D" uid="uid://n4lk7o67npkx" path="res://assets/sprites/train/train(Joints Background) _0001.png" id="3_ti6s8"]
 [ext_resource type="Texture2D" uid="uid://bng0pde5b208h" path="res://assets/sprites/train/train(Wheels) _0001.png" id="4_tfkm3"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhhnc3yfolmae" path="res://assets/sprites/train/train(Compartment Door) _0001.png" id="9_r2kyi"]
 [ext_resource type="Texture2D" uid="uid://cas5ldergjmj5" path="res://assets/sprites/train/train(Bar) _0001.png" id="10_d8wpw"]
 [ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="11_tfkm3"]
+[ext_resource type="PackedScene" uid="uid://7daox3vgvaak" path="res://scenes/compartment.tscn" id="13_tfkm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31djl"]
 size = Vector2(21, 30)
@@ -31,12 +33,13 @@ size = Vector2(20, 30)
 size = Vector2(296, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dguew"]
-size = Vector2(1, 39)
+size = Vector2(4, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx4d"]
-size = Vector2(1, 39)
+size = Vector2(4, 39)
 
 [node name="Train" type="Node2D" unique_id=1295495881]
+script = ExtResource("1_ti6s8")
 
 [node name="TrainGroup" type="CanvasGroup" parent="." unique_id=500970856]
 
@@ -280,10 +283,15 @@ shape = SubResource("RectangleShape2D_jo5lq")
 position = Vector2(-172.5, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D2" unique_id=794157147]
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_dguew")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="TrainGroup/Inside" unique_id=1389821841]
 position = Vector2(124.5, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D3" unique_id=1021861954]
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_6kx4d")
+
+[node name="Compartment" parent="." unique_id=600791262 instance=ExtResource("13_tfkm3")]
+visible = false

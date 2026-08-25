@@ -1,5 +1,12 @@
 class_name Interactable extends Area2D
 
+enum Type {
+	DOOR,
+	FOOD,
+	BED
+}
+@export var interact_type = Type.DOOR
+
 signal player_entered(interactable)
 signal player_exited(interactable)
 

@@ -6,7 +6,7 @@ extends Node
 var current_interactable
 var tween: Tween
 
-signal pressed()
+signal pressed(interactable: Interactable)
 
 func _ready() -> void:
 	interact_button.self_modulate = Color8(255,255,255,0)
@@ -41,8 +41,8 @@ func appear(pos: Vector2) -> void:
 
 func press() -> void:
 	interact_button.play("pressed")
+	pressed.emit(current_interactable)
 	current_interactable = null
-	pressed.emit()
 
 func disappear() -> void:
 	if tween:
