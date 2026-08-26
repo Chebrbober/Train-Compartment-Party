@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cogiqpnxstijp" path="res://ui/pause_menu.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dkl3weee68qms" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://brey5wiqkn7rx" path="res://scenes/train.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://c2w15ji2kjspw" path="res://assets/sprites/sky.png" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://bkvhk1aynrb00" path="res://assets/sprites/train/rails.png" id="5_iywne"]
 
 [node name="Game" type="Node2D" unique_id=1796160669]
 process_mode = 1
@@ -11,7 +13,28 @@ process_mode = 1
 visible = false
 
 [node name="Train" parent="." unique_id=1295495881 instance=ExtResource("3_lnu2h")]
-position = Vector2(-2, 0)
+position = Vector2(320, 180)
 
 [node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
-position = Vector2(-98, -5)
+position = Vector2(220, 171)
+
+[node name="ParallaxBackground" type="Node2D" parent="." unique_id=1859955760]
+
+[node name="Sky" type="Parallax2D" parent="ParallaxBackground" unique_id=1390400639]
+repeat_size = Vector2(2500, 0)
+autoscroll = Vector2(-5, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=279492014]
+position = Vector2(1272, 64)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_lbhrr")
+
+[node name="Rails" type="Parallax2D" parent="ParallaxBackground" unique_id=1260161849]
+repeat_size = Vector2(36, 0)
+autoscroll = Vector2(-250, 0)
+repeat_times = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Rails" unique_id=637233873]
+position = Vector2(0, 208)
+texture = ExtResource("5_iywne")
+centered = false
