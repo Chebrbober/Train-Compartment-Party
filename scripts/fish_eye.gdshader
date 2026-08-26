@@ -1,45 +1,26 @@
 shader_type canvas_item;
-uniform sampler2D SCREEN_TEXTURE:hint_screen_texture,filter_linear;
-// 鱼眼效果强度控制
-uniform float fish_intensity : hint_range(0.0, 2.0) = 1.0;
+
+uniform vec2 center = vec2(0.5);
+uniform float power: hint_range(0.1, 10.0, 0.01) = 1.0;
+uniform float radius: hint_range(0.0, 1.0, 0.01) = 0.3;
+uniform float crop_edge: hint_range(0.0, 1.0, 0.01) = 0.0;
+uniform vec4 crop_color: source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
 void fragment() {
-    // 获取屏幕分辨率
-    vec2 iResolution = vec2(textureSize(SCREEN_TEXTURE, 0));
-    // 基础UV坐标（适配Godot坐标系）
-    vec2 uv = UV;
-    uv.y = 1.0 - uv.y; // 翻转Y轴
-
-    // 宽高比计算
-    float aspectRatio = iResolution.x / iResolution.y;
-
-    // 计算强度参数
-    float strength = fish_intensity * 0.03;
-    vec2 intensity = vec2(
-        strength * aspectRatio,
-        strength * aspectRatio
-    );
-
-    // 坐标转换到[-1, 1]范围
-    vec2 coords = uv;
-    coords = (coords - 0.5) * 2.0;
-
-    // 计算坐标偏移量
-    vec2 realCoordOffs;
-    realCoordOffs.x = (1.0 - coords.y * coords.y) * intensity.y * coords.x;
-    realCoordOffs.y = (1.0 - coords.x * coords.x) * intensity.x * coords.y;
-
-    // 应用偏移
-    vec2 fuv = uv - realCoordOffs;
-    // 边界检查
-    if(fuv.x < 0.0 || fuv.x > 1.0 || fuv.y < 0.0 || fuv.y > 1.0) {
-        COLOR = vec4(0.0); // 超出范围显示黑
-		vec4 color = texture(SCREEN_TEXTURE,fuv);
-		COLOR.rgb=mix(color.rgb,color.bgr,length(fuv-0.5));
-    } else {
-        // 采样时再次翻转Y轴适配Godot坐标系
-        fuv.y = 1.0 - fuv.y;
-        COLOR = texture(SCREEN_TEXTURE, fuv);
-		vec4 color = texture(SCREEN_TEXTURE,fuv);
-		COLOR.rgb=mix(color.rgb,color.bgr,length(fuv-0.5));
-    }
+	vec2 uv = UV;
+	vec2 resolution = 1.0 / TEXTURE_PIXEL_SIZE;
+	vec2 aspect_uv = uv;
+	aspect_uv.x *= resolution.x / resolution.y;
+	vec2 eye_uv = center;
+	eye_uv.x *= resolution.x / resolution.y;
+	float dist = distance(eye_uv, aspect_uv);
+	float warp = clamp(0.5 - pow(dist/radius, 5.0), 0.0, 1.0);
+	float mag_factor = pow(warp, 1.0 / power);
+	if (dist < radius) {
+		uv += mag_factor * (center - uv);
+	}
+	COLOR = texture(TEXTURE, uv);
+	if (crop_edge > 0.0 && dist > radius - crop_edge) {
+		COLOR = mix(COLOR, crop_color, crop_color.a);
+	}
 }

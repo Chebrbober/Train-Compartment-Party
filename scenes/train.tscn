@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://tysie7jni0lv" path="res://assets/sprites/train/train(Spring) _0001.png" id="6_1kvv8"]
 [ext_resource type="Texture2D" uid="uid://b60yp788b0udm" path="res://assets/sprites/train/train(Body) _0001.png" id="7_risb3"]
 [ext_resource type="Texture2D" uid="uid://05h5dcrwpw7t" path="res://assets/sprites/train/train(Corridor) _0001.png" id="8_5wkan"]
+[ext_resource type="Material" uid="uid://c8xw3hlogpjck" path="res://scripts/fish_eye.tres" id="9_bbvoe"]
 [ext_resource type="Texture2D" uid="uid://dhhnc3yfolmae" path="res://assets/sprites/train/train(Compartment Door) _0001.png" id="9_r2kyi"]
 [ext_resource type="Texture2D" uid="uid://cas5ldergjmj5" path="res://assets/sprites/train/train(Bar) _0001.png" id="10_d8wpw"]
+[ext_resource type="Script" uid="uid://46gikvmtn4cp" path="res://ui/button_effects_module.gd" id="11_1kvv8"]
+[ext_resource type="Script" uid="uid://byqpovunuri6" path="res://scripts/peephole_hud.gd" id="11_risb3"]
 [ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="11_tfkm3"]
 [ext_resource type="PackedScene" uid="uid://7daox3vgvaak" path="res://scenes/compartment.tscn" id="13_tfkm3"]
-[ext_resource type="Shader" uid="uid://egwonsg1l68r" path="res://scripts/fish_eye.gdshader" id="14_bbvoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31djl"]
 size = Vector2(21, 30)
@@ -39,12 +41,9 @@ size = Vector2(4, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx4d"]
 size = Vector2(4, 39)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dguew"]
-shader = ExtResource("14_bbvoe")
-shader_parameter/fish_intensity = 1.0
-
 [node name="Train" type="Node2D" unique_id=1295495881]
 script = ExtResource("1_ti6s8")
+shader_resource = ExtResource("9_bbvoe")
 
 [node name="Compartment" parent="." unique_id=600791262 instance=ExtResource("13_tfkm3")]
 visible = false
@@ -148,7 +147,45 @@ position = Vector2(84, 19)
 texture = ExtResource("6_1kvv8")
 
 [node name="Body" type="Sprite2D" parent="TrainGroup/Outside" unique_id=1240146241]
+unique_name_in_owner = true
 texture = ExtResource("7_risb3")
+
+[node name="PeepholeCamera" type="Camera2D" parent="TrainGroup/Outside/Body" unique_id=398954506]
+unique_name_in_owner = true
+position = Vector2(-100, -5)
+enabled = false
+zoom = Vector2(8.5, 8.5)
+
+[node name="PeepholeHUD" type="CanvasLayer" parent="TrainGroup/Outside/Body" unique_id=251493860]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("11_risb3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=1681458546]
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.8
+anchor_right = 0.95
+anchor_bottom = 0.8
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Lock" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer" unique_id=1720037761]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LOCK"
+script = ExtResource("11_1kvv8")
+metadata/_custom_type_script = "uid://46gikvmtn4cp"
+
+[node name="Open" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer" unique_id=808628729]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "OPEN"
+script = ExtResource("11_1kvv8")
+metadata/_custom_type_script = "uid://46gikvmtn4cp"
 
 [node name="Inside" type="Node2D" parent="TrainGroup" unique_id=524496893]
 unique_name_in_owner = true
@@ -303,19 +340,5 @@ position = Vector2(124.5, -4)
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_6kx4d")
 
-[node name="PeepholeCamera" type="Camera2D" parent="TrainGroup" unique_id=398954506]
-unique_name_in_owner = true
-position = Vector2(-100, -4)
-enabled = false
-zoom = Vector2(8.5, 8.5)
-
-[node name="FishEye" type="CanvasLayer" parent="." unique_id=2028018895]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="FishEye" unique_id=1103945685]
-material = SubResource("ShaderMaterial_dguew")
-offset_left = -138.0
-offset_top = -26.0
-offset_right = -62.0
-offset_bottom = 18.0
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Lock" to="TrainGroup/Outside/Body/PeepholeHUD" method="lock"]
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Open" to="TrainGroup/Outside/Body/PeepholeHUD" method="open"]

@@ -11,6 +11,7 @@ process_mode = 1
 visible = false
 
 [node name="Train" parent="." unique_id=1295495881 instance=ExtResource("3_lnu2h")]
+position = Vector2(-2, 0)
 
 [node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
 position = Vector2(-98, -5)

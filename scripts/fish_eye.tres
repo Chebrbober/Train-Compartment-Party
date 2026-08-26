@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c8xw3hlogpjck"]
+
+[ext_resource type="Shader" uid="uid://egwonsg1l68r" path="res://scripts/fish_eye.gdshader" id="1_n3rt4"]
+
+[resource]
+shader = ExtResource("1_n3rt4")
+shader_parameter/center = Vector2(0.213, 0.41)
+shader_parameter/power = 0.84999998472612
+shader_parameter/radius = 0.3999999910592
+shader_parameter/crop_edge = 0.05999999865888
+shader_parameter/crop_color = Color(0, 0, 0, 1)
