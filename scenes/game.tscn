@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://iolp4xh251hy"]
 
+[ext_resource type="Script" uid="uid://fervrmkb14n3" path="res://scripts/game.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cogiqpnxstijp" path="res://ui/pause_menu.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dkl3weee68qms" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://brey5wiqkn7rx" path="res://scenes/train.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://c2w15ji2kjspw" path="res://assets/sprites/sky.png" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bkvhk1aynrb00" path="res://assets/sprites/train/rails.png" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://idqbym87ap8j" path="res://assets/sprites/ground.png" id="5_p57ef"]
 
 [node name="Game" type="Node2D" unique_id=1796160669]
 process_mode = 1
+script = ExtResource("1_u5sy4")
 
 [node name="PauseMenu" parent="." unique_id=1891448500 instance=ExtResource("1_uwrxv")]
 visible = false
@@ -28,6 +31,16 @@ autoscroll = Vector2(-5, 0)
 position = Vector2(1272, 64)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_lbhrr")
+
+[node name="Ground" type="Parallax2D" parent="ParallaxBackground" unique_id=617524156]
+repeat_size = Vector2(627.5, 0)
+autoscroll = Vector2(-250, 0)
+repeat_times = 40
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ground" unique_id=440469412]
+position = Vector2(313, 335)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("5_p57ef")
 
 [node name="Rails" type="Parallax2D" parent="ParallaxBackground" unique_id=1260161849]
 repeat_size = Vector2(36, 0)

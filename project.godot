@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://chv7np8s2h3xb"
 
 TransitionScene="*uid://iqqykrc8rs0j"
 InteractManager="*uid://b11qua7f71ehy"
+GameEvents="*uid://c3jm3ay6vcf34"
 
 [display]
 

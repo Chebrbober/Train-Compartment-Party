@@ -8,15 +8,10 @@ extends Node2D
 @onready var inside: Node2D = %Inside
 @onready var body: Sprite2D = %Body
 @onready var peephole_hud: CanvasLayer = %PeepholeHUD
-enum TrainState {
-	Corridor,
-	Compartment,
-	Peeping
-}
 
-var current_train_state: TrainState = TrainState.Corridor:
+var current_train_state: GameEvents.TrainState = GameEvents.TrainState.Corridor:
 	set(v):
-		if v == TrainState.Compartment:
+		if v == GameEvents.TrainState.Compartment:
 			peephole_camera.enabled = false
 			player.camera.enabled = true
 			compartment.visible = true
@@ -25,7 +20,7 @@ var current_train_state: TrainState = TrainState.Corridor:
 			body.material = null
 			peephole_hud.visible = false
 
-		elif v == TrainState.Peeping:
+		elif v == GameEvents.TrainState.Peeping:
 			train_group.process_mode = Node.PROCESS_MODE_INHERIT
 			player.camera.enabled = false
 			peephole_camera.enabled = true
@@ -35,8 +30,8 @@ var current_train_state: TrainState = TrainState.Corridor:
 			body.material = shader_resource
 			peephole_hud.visible = true
 
-
 		current_train_state = v
+		GameEvents.train_state_changed.emit(v)
 var is_transitioning: bool = false
 
 func _ready() -> void:
@@ -49,17 +44,17 @@ func _on_interact_pressed(interactable: Interactable) -> void:
 
 	match interactable.interact_type:
 		Interactable.Type.DOOR:
-			if current_train_state == TrainState.Corridor:
+			if current_train_state == GameEvents.TrainState.Corridor:
 				is_transitioning = true
 				enter_compartment()
-			elif current_train_state == TrainState.Compartment:
+			elif current_train_state == GameEvents.TrainState.Compartment:
 				is_transitioning = true
 				start_peeping()
 
 func enter_compartment() -> void:
 	TransitionScene.transition_to("",
 		func() -> void:
-			current_train_state = TrainState.Compartment
+			current_train_state = GameEvents.TrainState.Compartment
 			player.move_on_y_axis = true
 			compartment.move_player_to_spawn()
 			is_transitioning = false
@@ -69,7 +64,7 @@ func start_peeping() -> void:
 	print("The player is looking in the peephole")
 	TransitionScene.transition_to("",
 		func() -> void:
-			current_train_state = TrainState.Peeping
+			current_train_state = GameEvents.TrainState.Peeping
 			is_transitioning = false
 			peephole_camera.enabled = true
 			player.camera.enabled = false
