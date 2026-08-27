@@ -2,6 +2,7 @@ extends Node
 
 signal train_state_changed(state)
 signal door_access_changed(is_accesible: bool)
+signal npc_invited()
 @export var current_train_state: TrainState:
 	set(v):
 			current_train_state = v

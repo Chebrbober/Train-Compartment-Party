@@ -21,6 +21,7 @@ func anger() -> void:
 
 func invite() -> void:
 	print("invite animation")
+	GameEvents.npc_invited.emit()
 	pass
 
 func reset_timer() -> void:

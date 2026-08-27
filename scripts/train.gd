@@ -14,6 +14,7 @@ var is_transitioning: bool = false
 func _ready() -> void:
 	InteractManager.pressed.connect(_on_interact_pressed)
 	peephole_hud.lock_pressed.connect(stop_peeping)
+	peephole_hud.open_pressed.connect(stop_peeping)
 	peephole_hud.lock_pressed.connect(guest_manager.anger)
 	peephole_hud.open_pressed.connect(guest_manager.invite)
 	GameEvents.train_state_changed.connect(update_visibility)
