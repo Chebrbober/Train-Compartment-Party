@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://dve33chrqcck5"]
+
+[ext_resource type="Texture2D" uid="uid://vqe8fjtw0hqe" path="res://assets/sprites/npcs/grandpa/grandpa(Left Arm) _0001.png" id="1_tl2vt"]
+[ext_resource type="Texture2D" uid="uid://b176xe3s87uti" path="res://assets/sprites/npcs/grandpa/grandpa(Left Leg) _0001.png" id="2_hwkja"]
+[ext_resource type="Texture2D" uid="uid://cc2vry7pcoq24" path="res://assets/sprites/npcs/grandpa/grandpa(Right Leg) _0001.png" id="3_0tygy"]
+[ext_resource type="Texture2D" uid="uid://b6cmm4l0juli6" path="res://assets/sprites/npcs/grandpa/grandpa(Torso) _0001.png" id="4_sptji"]
+[ext_resource type="Texture2D" uid="uid://yta66nvx0vpi" path="res://assets/sprites/npcs/grandpa/grandpa(Right Hand) _0001.png" id="5_v4e37"]
+[ext_resource type="Texture2D" uid="uid://8fkmeueye0ua" path="res://assets/sprites/npcs/grandpa/grandpa(Head) _0001.png" id="6_1h837"]
+
+[sub_resource type="Animation" id="Animation_tl2vt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/RightArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/LeftArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/LeftLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/RightLeg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hwkja"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/RightArm:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6, -6), Vector2(-6, -5.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/RightArm:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/LeftArm:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -4.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/LeftArm:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body/LeftLeg:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body/RightLeg:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tygy"]
+_data = {
+&"RESET": SubResource("Animation_tl2vt"),
+&"idle": SubResource("Animation_hwkja")
+}
+
+[node name="NPC" type="Node2D" unique_id=1760660434]
+
+[node name="Body" type="CanvasGroup" parent="." unique_id=1200246768]
+
+[node name="LeftArm" type="Sprite2D" parent="Body" unique_id=1274384377]
+position = Vector2(0, -4.630596)
+texture = ExtResource("1_tl2vt")
+centered = false
+
+[node name="LeftLeg" type="Sprite2D" parent="Body" unique_id=351160438]
+position = Vector2(2, 11)
+texture = ExtResource("2_hwkja")
+
+[node name="RightLeg" type="Sprite2D" parent="Body" unique_id=1181831863]
+position = Vector2(-1.1920929e-07, 11.000001)
+texture = ExtResource("3_0tygy")
+
+[node name="Torso" type="Sprite2D" parent="Body" unique_id=1208829946]
+texture = ExtResource("4_sptji")
+
+[node name="RightArm" type="Sprite2D" parent="Body" unique_id=415907202]
+position = Vector2(-6, -5.630596)
+texture = ExtResource("5_v4e37")
+centered = false
+
+[node name="Head" type="Sprite2D" parent="Body" unique_id=254693755]
+position = Vector2(-4, -14)
+texture = ExtResource("6_1h837")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=827409987]
+libraries/ = SubResource("AnimationLibrary_0tygy")

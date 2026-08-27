@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://fervrmkb14n3" path="res://scripts/game.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cogiqpnxstijp" path="res://ui/pause_menu.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dkl3weee68qms" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://c66tqi7f83o7i" path="res://assets/sprites/mountains.png" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://brey5wiqkn7rx" path="res://scenes/train.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://c2w15ji2kjspw" path="res://assets/sprites/sky.png" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bkvhk1aynrb00" path="res://assets/sprites/train/rails.png" id="5_iywne"]
@@ -12,25 +13,27 @@
 process_mode = 1
 script = ExtResource("1_u5sy4")
 
-[node name="PauseMenu" parent="." unique_id=1891448500 instance=ExtResource("1_uwrxv")]
-visible = false
-
-[node name="Train" parent="." unique_id=1295495881 instance=ExtResource("3_lnu2h")]
-position = Vector2(320, 180)
-
-[node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
-position = Vector2(220, 171)
-
 [node name="ParallaxBackground" type="Node2D" parent="." unique_id=1859955760]
 
 [node name="Sky" type="Parallax2D" parent="ParallaxBackground" unique_id=1390400639]
-repeat_size = Vector2(2500, 0)
+repeat_size = Vector2(5089, 0)
 autoscroll = Vector2(-5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" unique_id=279492014]
-position = Vector2(1272, 64)
-scale = Vector2(0.25, 0.25)
+position = Vector2(1273, 126)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_lbhrr")
+flip_v = true
+
+[node name="Mountains" type="Parallax2D" parent="ParallaxBackground" unique_id=971802834]
+repeat_size = Vector2(2035, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountains" unique_id=1460783403]
+position = Vector2(0, 190)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_gee14")
 
 [node name="Ground" type="Parallax2D" parent="ParallaxBackground" unique_id=617524156]
 repeat_size = Vector2(627.5, 0)
@@ -51,3 +54,12 @@ repeat_times = 40
 position = Vector2(0, 208)
 texture = ExtResource("5_iywne")
 centered = false
+
+[node name="PauseMenu" parent="." unique_id=1891448500 instance=ExtResource("1_uwrxv")]
+visible = false
+
+[node name="Train" parent="." unique_id=1295495881 instance=ExtResource("3_lnu2h")]
+position = Vector2(320, 180)
+
+[node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
+position = Vector2(220, 171)

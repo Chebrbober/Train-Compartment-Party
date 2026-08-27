@@ -106,6 +106,7 @@ position = Vector2(312, 264)
 texture = ExtResource("4_jnh6r")
 
 [node name="Interactable" type="Area2D" parent="Stairs" unique_id=1955066399]
+unique_name_in_owner = true
 position = Vector2(312, 264)
 collision_mask = 2
 script = ExtResource("5_k4cyq")
