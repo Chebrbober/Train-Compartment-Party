@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BodyBundle" format=3 uid="uid://htoqa2e3osqx"]
+
+[ext_resource type="Texture2D" uid="uid://8fkmeueye0ua" path="res://assets/sprites/npcs/grandpa/grandpa(Head) _0001.png" id="1_hknig"]
+[ext_resource type="Script" uid="uid://bf707hcclobrb" path="res://scripts/body_bundle.gd" id="1_kobtw"]
+[ext_resource type="Texture2D" uid="uid://vqe8fjtw0hqe" path="res://assets/sprites/npcs/grandpa/grandpa(Left Arm) _0001.png" id="2_kp8p4"]
+[ext_resource type="Texture2D" uid="uid://b176xe3s87uti" path="res://assets/sprites/npcs/grandpa/grandpa(Left Leg) _0001.png" id="3_dvb6h"]
+[ext_resource type="Texture2D" uid="uid://yta66nvx0vpi" path="res://assets/sprites/npcs/grandpa/grandpa(Right Hand) _0001.png" id="4_h1uu3"]
+[ext_resource type="Texture2D" uid="uid://cc2vry7pcoq24" path="res://assets/sprites/npcs/grandpa/grandpa(Right Leg) _0001.png" id="5_rihn4"]
+[ext_resource type="Texture2D" uid="uid://b6cmm4l0juli6" path="res://assets/sprites/npcs/grandpa/grandpa(Torso) _0001.png" id="7_33xy0"]
+
+[resource]
+script = ExtResource("1_kobtw")
+head = ExtResource("1_hknig")
+right_arm = ExtResource("4_h1uu3")
+left_arm = ExtResource("2_kp8p4")
+torso = ExtResource("7_33xy0")
+right_leg = ExtResource("5_rihn4")
+left_leg = ExtResource("3_dvb6h")
+metadata/_custom_type_script = "uid://bf707hcclobrb"

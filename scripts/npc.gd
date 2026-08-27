@@ -1,0 +1,31 @@
+extends Node2D
+
+@export var type: Type = Type.Good
+@export var body_bundles_array: Array[BodyBundle]
+@onready var head: Sprite2D = %Head
+@onready var right_arm: Sprite2D = %RightArm
+@onready var left_arm: Sprite2D = %LeftArm
+@onready var torso: Sprite2D = %Torso
+@onready var right_leg: Sprite2D = %RightLeg
+@onready var left_leg: Sprite2D = %LeftLeg
+var body_bundle: BodyBundle
+enum Type {
+	Good,
+	Bad
+}
+
+func _ready() -> void:
+	update()
+
+func update() -> void:
+	type = Type.values().pick_random()
+	body_bundle = body_bundles_array.pick_random()
+	setup_body_bundle(body_bundle)
+
+func setup_body_bundle(bundle: BodyBundle) -> void:
+	head.texture = bundle.head
+	right_arm.texture = bundle.right_arm
+	left_arm.texture = bundle.left_arm
+	torso.texture = bundle.torso
+	right_leg.texture = bundle.right_leg
+	left_leg.texture = bundle.left_leg

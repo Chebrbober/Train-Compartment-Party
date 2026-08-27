@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BodyBundle" format=3 uid="uid://bqjn73calpc6u"]
+
+[ext_resource type="Texture2D" uid="uid://u4e3ro8mturo" path="res://assets/sprites/npcs/human/human(Head) _0001.png" id="1_bq20r"]
+[ext_resource type="Script" uid="uid://bf707hcclobrb" path="res://scripts/body_bundle.gd" id="1_dyt10"]
+[ext_resource type="Texture2D" uid="uid://dmbae267eamqp" path="res://assets/sprites/npcs/human/human(Left Arm) _0001.png" id="2_xbgh7"]
+[ext_resource type="Texture2D" uid="uid://y7c7kkd1ciqu" path="res://assets/sprites/npcs/human/human(Left Leg) _0001.png" id="3_pprc3"]
+[ext_resource type="Texture2D" uid="uid://21c272m66iwn" path="res://assets/sprites/npcs/human/human(Right Hand) _0001.png" id="4_d8ihd"]
+[ext_resource type="Texture2D" uid="uid://c1i5ro3dmbnpm" path="res://assets/sprites/npcs/human/human(Right Leg) _0001.png" id="5_gjqsw"]
+[ext_resource type="Texture2D" uid="uid://07gq07xa476" path="res://assets/sprites/npcs/human/human(Torso) _0001.png" id="7_gul5k"]
+
+[resource]
+script = ExtResource("1_dyt10")
+head = ExtResource("1_bq20r")
+right_arm = ExtResource("4_d8ihd")
+left_arm = ExtResource("2_xbgh7")
+torso = ExtResource("7_gul5k")
+right_leg = ExtResource("5_gjqsw")
+left_leg = ExtResource("3_pprc3")
+metadata/_custom_type_script = "uid://bf707hcclobrb"
