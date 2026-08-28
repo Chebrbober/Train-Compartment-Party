@@ -18,6 +18,7 @@ func peep_through_peephole() -> void:
 func _on_invite() -> void:
 	sleeping_npc.visible = true
 	sleeping_npc.process_mode = Node.PROCESS_MODE_INHERIT
+	GameEvents.has_sleeping_npc = true
 
 func _on_door_access_changed(is_acessible: bool) -> void:
 	if is_acessible:

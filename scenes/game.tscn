@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://c2w15ji2kjspw" path="res://assets/sprites/sky.png" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bkvhk1aynrb00" path="res://assets/sprites/train/rails.png" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://idqbym87ap8j" path="res://assets/sprites/ground.png" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://c5yvwu8m87phu" path="res://scripts/day_manager.gd" id="9_0tnpc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D" unique_id=1796160669]
 process_mode = 1
@@ -63,3 +69,27 @@ position = Vector2(320, 180)
 
 [node name="Player" parent="." unique_id=818937096 instance=ExtResource("2_yqjtg")]
 position = Vector2(220, 171)
+
+[node name="DayManager" type="Node" parent="." unique_id=190759466]
+script = ExtResource("9_0tnpc")
+
+[node name="DayTimer" type="Timer" parent="DayManager" unique_id=1843579862]
+wait_time = 360.0
+one_shot = true
+
+[node name="BedtimeTimer" type="Timer" parent="DayManager" unique_id=486352512]
+wait_time = 60.0
+one_shot = true
+
+[node name="TimerHUD" type="CanvasLayer" parent="DayManager" unique_id=885271573]
+
+[node name="TimerLabel" type="Label" parent="DayManager/TimerHUD" unique_id=452384897]
+offset_right = 72.0
+offset_bottom = 34.0
+text = "0:00"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="DayManager/DayTimer" to="DayManager" method="_on_day_timeout"]
+[connection signal="timeout" from="DayManager/BedtimeTimer" to="DayManager" method="_on_bedtime_timeout"]
