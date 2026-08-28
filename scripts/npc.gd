@@ -8,6 +8,7 @@ extends Node2D
 @onready var torso: Sprite2D = %Torso
 @onready var right_leg: Sprite2D = %RightLeg
 @onready var left_leg: Sprite2D = %LeftLeg
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 var body_bundle: BodyBundle
 enum Type {
 	Good,
@@ -15,7 +16,9 @@ enum Type {
 }
 
 func _ready() -> void:
+	visible = false
 	update()
+	animation_player.play("idle")
 
 func update() -> void:
 	type = Type.values().pick_random()

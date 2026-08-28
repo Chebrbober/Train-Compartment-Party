@@ -17,12 +17,15 @@ func appear() -> void:
 
 func anger() -> void:
 	print("anger animation")
-	pass
+	npc_node.animation_player.play("anger")
+	await npc_node.animation_player.animation_finished
+	GameEvents.npc_raged.emit()
 
 func invite() -> void:
 	print("invite animation")
+	npc_node.animation_player.play("happiness")
+	await npc_node.animation_player.animation_finished
 	GameEvents.npc_invited.emit()
-	pass
 
 func reset_timer() -> void:
 	timer.start(randf_range(10,20))
