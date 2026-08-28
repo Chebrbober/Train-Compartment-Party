@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cf2ly6yek8mjd"]
+
+[ext_resource type="Script" uid="uid://c5yvwu8m87phu" path="res://scripts/day_manager.gd" id="1_c7ycp"]
+
+[node name="DayManager" type="Node" unique_id=1292075784]
+script = ExtResource("1_c7ycp")
+
+[node name="DayTimer" type="Timer" parent="." unique_id=532627623]
+wait_time = 360.0
+one_shot = true
+
+[node name="BedtimeTimer" type="Timer" parent="." unique_id=676209532]
+wait_time = 60.0
+one_shot = true
+
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timeout"]
+[connection signal="timeout" from="BedtimeTimer" to="." method="_on_bedtime_timeout"]

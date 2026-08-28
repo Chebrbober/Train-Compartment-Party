@@ -91,5 +91,10 @@ label_settings = SubResource("LabelSettings_0tnpc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CanvasModulate" type="CanvasModulate" parent="DayManager" unique_id=449981170]
+visible = false
+position = Vector2(323, 195)
+color = Color(0.3254902, 0.6627451, 1, 1)
+
 [connection signal="timeout" from="DayManager/DayTimer" to="DayManager" method="_on_day_timeout"]
 [connection signal="timeout" from="DayManager/BedtimeTimer" to="DayManager" method="_on_bedtime_timeout"]

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2k8siyc8morx" path="res://assets/sprites/train/stairs.png" id="4_jnh6r"]
 [ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="5_k4cyq"]
 [ext_resource type="Texture2D" uid="uid://dwya4opaohwqy" path="res://assets/sprites/npcs/asleep_npc.png" id="6_r3moi"]
+[ext_resource type="Texture2D" uid="uid://dfhnhi8n7hpid" path="res://assets/sprites/train/bed.png" id="7_lw1g3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jnh6r"]
 texture = ExtResource("1_cek7t")
@@ -80,11 +81,20 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo5lq"]
 size = Vector2(20, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kx4d"]
+radius = 19.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx4d"]
+size = Vector2(21, 32)
+
 [node name="Compartment" type="Node2D" unique_id=600791262]
 script = ExtResource("1_lw248")
 
 [node name="SpawnMarker" type="Marker2D" parent="." unique_id=727371479]
 position = Vector2(312, 225)
+
+[node name="BedMarker" type="Marker2D" parent="." unique_id=1174937594]
+position = Vector2(260, 128)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1198485905]
 custom_minimum_size = Vector2(5000, 5000)
@@ -109,14 +119,14 @@ tile_set = SubResource("TileSet_jo5lq")
 position = Vector2(312, 264)
 texture = ExtResource("4_jnh6r")
 
-[node name="Interactable" type="Area2D" parent="Stairs" unique_id=1955066399]
+[node name="StairsInteractable" type="Area2D" parent="Stairs" unique_id=1955066399]
 unique_name_in_owner = true
 position = Vector2(312, 264)
 collision_mask = 2
 script = ExtResource("5_k4cyq")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/Interactable" unique_id=820464086]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/StairsInteractable" unique_id=820464086]
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_jo5lq")
 
@@ -137,3 +147,28 @@ texture = ExtResource("6_r3moi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SleepingNPC/StaticBody2D" unique_id=1098112042]
 shape = SubResource("RectangleShape2D_jo5lq")
+
+[node name="Bed" type="Node2D" parent="." unique_id=1784048936]
+position = Vector2(241, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bed" unique_id=1191132661]
+texture = ExtResource("7_lw1g3")
+
+[node name="BedInteractable" type="Area2D" parent="Bed" unique_id=1227686967]
+unique_name_in_owner = true
+collision_mask = 2
+monitoring = false
+script = ExtResource("5_k4cyq")
+interact_type = 2
+metadata/_custom_type_script = "uid://dn7rwygl16mse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/BedInteractable" unique_id=1764908175]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_6kx4d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bed" unique_id=119240616]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D" unique_id=854630816]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6kx4d")

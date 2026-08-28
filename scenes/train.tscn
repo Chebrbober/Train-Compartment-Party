@@ -652,7 +652,7 @@ texture = ExtResource("10_d8wpw")
 position = Vector2(20, -4)
 texture = ExtResource("10_d8wpw")
 
-[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=685546785 groups=["interactables"]]
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentOne" unique_id=685546785]
 collision_mask = 2
 script = ExtResource("11_tfkm3")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
@@ -677,7 +677,7 @@ texture = ExtResource("10_d8wpw")
 position = Vector2(20, -4)
 texture = ExtResource("10_d8wpw")
 
-[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=363461566 groups=["interactables"]]
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentTwo" unique_id=363461566]
 collision_mask = 2
 script = ExtResource("11_tfkm3")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
@@ -702,7 +702,7 @@ texture = ExtResource("10_d8wpw")
 position = Vector2(20, -4)
 texture = ExtResource("10_d8wpw")
 
-[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=2113707453 groups=["interactables"]]
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentThree" unique_id=2113707453]
 collision_mask = 2
 script = ExtResource("11_tfkm3")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
@@ -727,7 +727,7 @@ texture = ExtResource("10_d8wpw")
 position = Vector2(20, -4)
 texture = ExtResource("10_d8wpw")
 
-[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=569417653 groups=["interactables"]]
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFour" unique_id=569417653]
 collision_mask = 2
 script = ExtResource("11_tfkm3")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"
@@ -752,7 +752,7 @@ texture = ExtResource("10_d8wpw")
 position = Vector2(20, -4)
 texture = ExtResource("10_d8wpw")
 
-[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=564425117 groups=["interactables"]]
+[node name="Interactable" type="Area2D" parent="TrainGroup/Inside/CompartmentFive" unique_id=564425117]
 collision_mask = 2
 script = ExtResource("11_tfkm3")
 metadata/_custom_type_script = "uid://dn7rwygl16mse"

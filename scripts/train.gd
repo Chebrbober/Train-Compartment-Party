@@ -50,6 +50,9 @@ func _on_interact_pressed(interactable: Interactable) -> void:
 			elif GameEvents.current_train_state == GameEvents.TrainState.Compartment:
 				is_transitioning = true
 				start_peeping()
+		Interactable.Type.BED:
+			is_transitioning = true
+			trigger_sleep_sequence()
 
 func enter_compartment() -> void:
 	TransitionScene.transition_to("",
@@ -78,3 +81,13 @@ func stop_peeping() -> void:
 	print("The player closed the peephole")
 	enter_compartment()
 	player.set_physics_process(true)
+
+func trigger_sleep_sequence() -> void:
+	TransitionScene.transition_to("", func() -> void:
+		if GameEvents.has_sleeping_npc:
+			print("Safe: You are sleeping with an NPC.")
+		else:
+			print("Danger: Sleeping alone! Killer can appear.")
+
+		GameEvents.current_phase = GameEvents.DayPhase.Night
+	)

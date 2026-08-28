@@ -3,15 +3,17 @@ extends Node
 @onready var day_timer: Timer = $DayTimer
 @onready var bedtime_timer: Timer = $BedtimeTimer
 @onready var timer_label: Label = $TimerHUD/TimerLabel
+@onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 func _ready() -> void:
 	GameEvents.train_state_changed.connect(start_day_timer)
+	GameEvents.day_phase_changed.connect(_on_day_phase_changed)
 	start_day_timer(GameEvents.current_train_state)
 
 func start_day_timer(state: GameEvents.TrainState) -> void:
 	if state == GameEvents.TrainState.Compartment and day_timer.is_stopped():
 		day_timer.start()
-		print('Day timer started!')
+		print('Day timer started for day ', GameEvents.current_day)
 
 func _process(delta: float) -> void:
 	if !bedtime_timer.is_stopped():
@@ -34,13 +36,17 @@ func _on_day_timeout() -> void:
 	bedtime_timer.start()
 
 func _on_bedtime_timeout() -> void:
-	trigger_night_phase()
-
-func trigger_night_phase() -> void:
-	GameEvents.current_phase = GameEvents.DayPhase.Night
-	TransitionScene.transition_to("", func():
-		if GameEvents.has_sleeping_npc:
-			print("Safe: You are sleeping with an NPC.")
-		else:
-			print("Danger: Sleeping alone! Killer can appear.")
+	print("Night has already began...")
+	TransitionScene.transition_to("", func() -> void:
+		GameEvents.current_phase = GameEvents.DayPhase.Night
 	)
+
+func _on_day_phase_changed(phase: GameEvents.DayPhase) -> void:
+	if phase == GameEvents.DayPhase.Night:
+		timer_label.visible = false
+		canvas_modulate.visible = true
+	else:
+		if day_timer.is_stopped():
+			day_timer.start()
+		timer_label.visible = true
+		canvas_modulate.visible = false
