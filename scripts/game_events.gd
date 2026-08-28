@@ -2,6 +2,7 @@ extends Node
 
 signal train_state_changed(state)
 signal door_access_changed(is_accesible: bool)
+signal peephole_opened()
 signal npc_invited()
 signal npc_raged()
 @export var current_train_state: TrainState:
@@ -14,3 +15,6 @@ enum TrainState {
 	Compartment,
 	Peeping
 }
+
+func reset_game() -> void:
+	current_train_state = TrainState.Corridor

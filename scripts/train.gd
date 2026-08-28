@@ -12,6 +12,7 @@ var is_transitioning: bool = false
 
 
 func _ready() -> void:
+	GameEvents.reset_game()
 	InteractManager.pressed.connect(_on_interact_pressed)
 	peephole_hud.lock_pressed.connect(guest_manager.anger)
 	peephole_hud.open_pressed.connect(guest_manager.invite)
@@ -65,6 +66,7 @@ func start_peeping() -> void:
 	TransitionScene.transition_to("",
 		func() -> void:
 			GameEvents.current_train_state = GameEvents.TrainState.Peeping
+			GameEvents.peephole_opened.emit()
 			is_transitioning = false
 			peephole_camera.enabled = true
 			player.camera.enabled = false
