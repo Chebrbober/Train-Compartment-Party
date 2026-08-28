@@ -2,6 +2,7 @@ extends Node
 
 @onready var spawn_marker: Marker2D = $SpawnMarker
 @onready var bed_marker: Marker2D = $BedMarker
+@onready var sleep_marker: Marker2D = $SleepMarker
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var stairs_interactable: Interactable = %StairsInteractable
 @onready var bed_interactable: Interactable = %BedInteractable
@@ -18,9 +19,13 @@ func move_player_to_spawn() -> void:
 
 func move_player_near_bed() -> void:
 	player.global_position = bed_marker.global_position
+	player.set_physics_process(true)
+	player.wake_up()
 
-func peep_through_peephole() -> void:
-	TransitionScene.transition_to("")
+func player_sleep() -> void:
+	player.global_position = sleep_marker.global_position
+	player.sleep()
+	player.set_physics_process(false)
 
 func _on_invite() -> void:
 	sleeping_npc.visible = true
@@ -37,6 +42,7 @@ func _on_day_phase_changed(phase: GameEvents.DayPhase) -> void:
 func _on_day_count_changed() -> void:
 	bed_interactable.monitoring = false
 	sleeping_npc.visible = false
+	sleeping_npc.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_door_access_changed(is_acessible: bool) -> void:
 	if is_acessible:

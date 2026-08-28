@@ -96,6 +96,9 @@ position = Vector2(312, 225)
 [node name="BedMarker" type="Marker2D" parent="." unique_id=1174937594]
 position = Vector2(260, 128)
 
+[node name="SleepMarker" type="Marker2D" parent="." unique_id=705599215]
+position = Vector2(240, 121)
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1198485905]
 custom_minimum_size = Vector2(5000, 5000)
 anchors_preset = 15

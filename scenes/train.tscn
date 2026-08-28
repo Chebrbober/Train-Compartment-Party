@@ -580,7 +580,7 @@ unique_name_in_owner = true
 visible = false
 script = ExtResource("11_risb3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=1681458546]
+[node name="Buttons" type="VBoxContainer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=1681458546]
 anchors_preset = -1
 anchor_left = 0.95
 anchor_top = 0.8
@@ -592,14 +592,14 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 15
 
-[node name="Lock" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer" unique_id=1720037761]
+[node name="Lock" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/Buttons" unique_id=1720037761]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "LOCK"
 script = ExtResource("11_1kvv8")
 metadata/_custom_type_script = "uid://46gikvmtn4cp"
 
-[node name="Open" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer" unique_id=808628729]
+[node name="Open" type="Button" parent="TrainGroup/Outside/Body/PeepholeHUD/Buttons" unique_id=808628729]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "OPEN"
@@ -833,8 +833,8 @@ npc_node = NodePath("../TrainGroup/NPC")
 [node name="Timer" type="Timer" parent="GuestManager" unique_id=1046974221]
 one_shot = true
 
-[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Lock" to="TrainGroup/Outside/Body/PeepholeHUD" method="lock"]
-[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Lock" to="TrainGroup/Outside/Body/PeepholeHUD/MonologLabel" method="angry"]
-[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Open" to="TrainGroup/Outside/Body/PeepholeHUD" method="open"]
-[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/VBoxContainer/Open" to="TrainGroup/Outside/Body/PeepholeHUD/MonologLabel" method="happy"]
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/Buttons/Lock" to="TrainGroup/Outside/Body/PeepholeHUD" method="lock"]
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/Buttons/Lock" to="TrainGroup/Outside/Body/PeepholeHUD/MonologLabel" method="angry"]
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/Buttons/Open" to="TrainGroup/Outside/Body/PeepholeHUD" method="open"]
+[connection signal="pressed" from="TrainGroup/Outside/Body/PeepholeHUD/Buttons/Open" to="TrainGroup/Outside/Body/PeepholeHUD/MonologLabel" method="happy"]
 [connection signal="timeout" from="GuestManager/Timer" to="GuestManager" method="_on_timer_timeout"]

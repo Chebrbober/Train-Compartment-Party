@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var body: CanvasGroup = $Body
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera: Camera2D = $Camera2D
+@onready var head: Sprite2D = %Head
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var move_on_y_axis: bool = false
 
@@ -33,3 +35,13 @@ func _physics_process(delta: float) -> void:
 		body.scale.x = -1
 
 	move_and_slide()
+
+func sleep() -> void:
+	animation_player.play("sleep")
+	collision_shape.disabled = true
+	animation_player.seek(0.0, true)
+
+func wake_up() -> void:
+	animation_player.play("RESET")
+	collision_shape.disabled = false
+	animation_player.seek(0.0, true)
