@@ -10,6 +10,7 @@ extends Node2D
 @onready var left_leg: Sprite2D = %LeftLeg
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var body_bundle: BodyBundle
+var npc_type: Type = Type.values().pick_random()
 enum Type {
 	Good,
 	Bad
@@ -18,12 +19,17 @@ enum Type {
 func _ready() -> void:
 	visible = false
 	update()
-	animation_player.play("idle")
+	if npc_type == Type.Good:
+		animation_player.play("idle")
+	else:
+		animation_player.play("jagged_idle")
 
 func update() -> void:
-	type = Type.values().pick_random()
+	npc_type = Type.values().pick_random()
 	body_bundle = body_bundles_array.pick_random()
 	setup_body_bundle(body_bundle)
+
+	GameEvents.has_bad_npc = (npc_type == Type.Bad)
 
 func setup_body_bundle(bundle: BodyBundle) -> void:
 	head.texture = bundle.head

@@ -37,7 +37,6 @@ func update_visibility(state) -> void:
 		train_group.visible = true
 		inside.visible = false
 		train_group.material = shader_resource
-		peephole_hud.visible = true
 		peephole_hud.appear()
 
 func _on_interact_pressed(interactable: Interactable) -> void:

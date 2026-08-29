@@ -28,6 +28,8 @@ var current_phase: DayPhase = DayPhase.Day:
 		current_phase = v
 		day_phase_changed.emit(v)
 var has_sleeping_npc: bool = false
+var has_bad_npc: bool = false
+
 
 func reset_game() -> void:
 	current_train_state = TrainState.Corridor
