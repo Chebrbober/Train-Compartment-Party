@@ -24,10 +24,14 @@ var current_day: int = 1:
 	set(v):
 		current_day = v
 		day_count_changed.emit()
+
+		if v == 8:
+			game_over.emit(true)
 var current_phase: DayPhase = DayPhase.Day:
 	set(v):
 		current_phase = v
 		day_phase_changed.emit(v)
+		door_access_changed.emit(false)
 var has_sleeping_npc: bool = false
 var has_bad_npc: bool = false
 
@@ -42,3 +46,4 @@ func next_day() -> void:
 	current_day += 1
 	current_phase = DayPhase.Day
 	door_access_changed.emit(false)
+	print("Day ", current_day)

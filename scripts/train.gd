@@ -98,8 +98,11 @@ func trigger_sleep_sequence() -> void:
 	if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
 		TransitionScene.transition_to("", func() -> void:
 			GameEvents.next_day()
-			compartment.move_player_near_bed()
-			is_transitioning = false
+			if GameEvents.current_day == 8:
+				print("Game over triggered! You won!")
+			else:
+				compartment.move_player_near_bed()
+				is_transitioning = false
 	)
 	else:
-		print("Game Over trigged!")
+		print("Game Over trigged! You loose!")

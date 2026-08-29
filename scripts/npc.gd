@@ -18,11 +18,6 @@ enum Type {
 
 func _ready() -> void:
 	visible = false
-	update()
-	if npc_type == Type.Good:
-		animation_player.play("idle")
-	else:
-		animation_player.play("jagged_idle")
 
 func update() -> void:
 	npc_type = Type.values().pick_random()
@@ -31,6 +26,11 @@ func update() -> void:
 
 	GameEvents.has_bad_npc = (npc_type == Type.Bad)
 	print("Npc is ", npc_type)
+
+	if npc_type == Type.Good:
+		animation_player.play("idle")
+	else:
+		animation_player.play("jagged_idle")
 
 func setup_body_bundle(bundle: BodyBundle) -> void:
 	head.texture = bundle.head

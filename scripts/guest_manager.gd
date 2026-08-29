@@ -31,7 +31,7 @@ func invite() -> void:
 	GameEvents.npc_invited.emit()
 
 func reset_timer() -> void:
-	if GameEvents.current_train_state != GameEvents.TrainState.Corridor:
+	if GameEvents.current_train_state != GameEvents.TrainState.Corridor and GameEvents.current_phase == GameEvents.DayPhase.Day:
 		if !GameEvents.has_sleeping_npc:
 			var random_time = randf_range(15, 25)
 			timer.start(random_time)
