@@ -181,7 +181,6 @@ script = ExtResource("1_t7e0r")
 metadata/_custom_type_script = "uid://46gikvmtn4cp"
 
 [node name="Credits" type="PanelContainer" parent="CanvasLayer" unique_id=268888033]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -231,6 +230,7 @@ text = "[b]Made by:[/b]
 
 [node name="Back" type="Button" parent="CanvasLayer/Credits/MarginContainer/VBoxContainer" unique_id=1587013901]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
