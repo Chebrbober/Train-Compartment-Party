@@ -37,8 +37,8 @@ anchor_top = 0.1
 anchor_right = 0.1
 anchor_bottom = 0.1
 offset_left = -20.0
-offset_right = 251.24188
-offset_bottom = 68.94317
+offset_right = 280.0
+offset_bottom = 150.0
 rotation = -0.06283186
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -48,7 +48,8 @@ theme_override_font_sizes/bold_italics_font_size = 16
 theme_override_font_sizes/italics_font_size = 16
 theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
-text = "[wave freq=5]The Game[/wave]"
+text = "[wave freq=5]Knock at Night[/wave]"
+fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

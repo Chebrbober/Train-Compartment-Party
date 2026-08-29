@@ -2,7 +2,8 @@ extends Node
 
 @onready var day_timer: Timer = $DayTimer
 @onready var bedtime_timer: Timer = $BedtimeTimer
-@onready var timer_label: Label = $TimerHUD/TimerLabel
+@onready var timer_label: Label = $TimerHUD/HBoxContainer/TimerLabel
+@onready var day_label: Label = $TimerHUD/HBoxContainer/DayLabel
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var day_wait_time = day_timer.wait_time
 @onready var bedtime_wait_time = bedtime_timer.wait_time
@@ -55,3 +56,4 @@ func _on_day_count_changed() -> void:
 	bedtime_timer.stop()
 	day_timer.start(day_wait_time)
 	bedtime_timer.wait_time = bedtime_wait_time
+	day_label.text = "Day %d" % GameEvents.current_day

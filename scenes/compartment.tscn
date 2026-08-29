@@ -328,3 +328,4 @@ libraries/ = SubResource("AnimationLibrary_2oyjg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Killer" unique_id=1662855436]
 stream = ExtResource("15_j6wl3")
+bus = &"SFX"

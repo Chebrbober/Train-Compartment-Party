@@ -16,6 +16,7 @@ func appear() -> void:
 	npc_node.update()
 	npc_node.visible = true
 	GameEvents.door_access_changed.emit(true)
+	GameEvents.npc_arrived.emit()
 	print("npc appeared")
 
 func anger() -> void:
@@ -41,3 +42,6 @@ func reset_timer() -> void:
 			timer.stop()
 			GameEvents.door_access_changed.emit(false)
 			print("Player found a npc to sleep with")
+	else:
+		print("it is in corridor or current phase is not day")
+		print("Current state: ", GameEvents.current_train_state, " Current phase: ", GameEvents.current_phase)

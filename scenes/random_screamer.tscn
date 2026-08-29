@@ -230,6 +230,7 @@ texture = ExtResource("1_8oets")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=415647270]
 stream = ExtResource("2_hp1n3")
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105020794]
 libraries/ = SubResource("AnimationLibrary_dwmb0")

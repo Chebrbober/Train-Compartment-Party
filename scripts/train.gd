@@ -9,6 +9,9 @@ extends Node2D
 @onready var inside: Node2D = %Inside
 @onready var peephole_hud: CanvasLayer = %PeepholeHUD
 @onready var guest_manager: Node = $GuestManager
+@onready var door_opening_sound: AudioStreamPlayer = %DoorOpeningSound
+@onready var door_knocking_sound: AudioStreamPlayer = %DoorKnocking
+@onready var door_knocking_angry_sound: AudioStreamPlayer = %DoorKnockingAngry
 var is_transitioning: bool = false
 
 
@@ -20,6 +23,7 @@ func _ready() -> void:
 	GameEvents.train_state_changed.connect(update_visibility)
 	GameEvents.npc_raged.connect(stop_peeping)
 	GameEvents.npc_invited.connect(stop_peeping)
+	GameEvents.npc_arrived.connect(play_knocking_sound)
 	GameEvents.day_phase_changed.connect(auto_sleep)
 
 func update_visibility(state) -> void:
@@ -57,6 +61,7 @@ func _on_interact_pressed(interactable: Interactable) -> void:
 			trigger_sleep_sequence()
 
 func enter_compartment() -> void:
+	door_opening_sound.play()
 	TransitionScene.transition_to("",
 		func() -> void:
 			GameEvents.current_train_state = GameEvents.TrainState.Compartment
@@ -84,11 +89,18 @@ func stop_peeping() -> void:
 	enter_compartment()
 	player.set_physics_process(true)
 
+func play_knocking_sound() -> void:
+	if randi_range(0, 1) == 0:
+		door_knocking_sound.play()
+	else:
+		door_knocking_angry_sound.play()
+
 func trigger_sleep_sequence() -> void:
 	is_transitioning = true
 
 	TransitionScene.transition_to("", func() -> void:
 		compartment.player_sleep()
+		GameEvents.current_phase = GameEvents.DayPhase.Night
 		if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
 			print("Safe: You are sleeping with an NPC.")
 		else:

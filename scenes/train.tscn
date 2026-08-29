@@ -17,9 +17,12 @@
 [ext_resource type="Script" uid="uid://dn7rwygl16mse" path="res://scripts/interactable.gd" id="11_tfkm3"]
 [ext_resource type="PackedScene" uid="uid://7daox3vgvaak" path="res://scenes/compartment.tscn" id="13_tfkm3"]
 [ext_resource type="PackedScene" uid="uid://c8ldssqa5jpfi" path="res://scenes/random_screamer.tscn" id="14_wpftp"]
+[ext_resource type="AudioStream" uid="uid://7i3keiqar7pf" path="res://assets/sounds/knocking-on-the-door.ogg" id="15_dwmb0"]
+[ext_resource type="AudioStream" uid="uid://bc8jyn6hsn7od" path="res://assets/sounds/door_knocking_angry.ogg" id="16_fxqph"]
 [ext_resource type="Texture2D" uid="uid://vqe8fjtw0hqe" path="res://assets/sprites/npcs/grandpa/grandpa(Left Arm) _0001.png" id="19_8vti3"]
 [ext_resource type="Script" uid="uid://bf707hcclobrb" path="res://scripts/body_bundle.gd" id="19_dv8o2"]
 [ext_resource type="Script" uid="uid://c8lu07bs2vmys" path="res://scripts/npc.gd" id="19_gmphw"]
+[ext_resource type="AudioStream" uid="uid://diuaeikrlsyr4" path="res://assets/sounds/train_door_opening.ogg" id="19_qp37i"]
 [ext_resource type="Texture2D" uid="uid://b176xe3s87uti" path="res://assets/sprites/npcs/grandpa/grandpa(Left Leg) _0001.png" id="20_gmphw"]
 [ext_resource type="Resource" uid="uid://bqjn73calpc6u" path="res://resources/human.tres" id="20_k36hf"]
 [ext_resource type="Texture2D" uid="uid://cc2vry7pcoq24" path="res://assets/sprites/npcs/grandpa/grandpa(Right Leg) _0001.png" id="21_7iku6"]
@@ -793,6 +796,15 @@ script = ExtResource("27_k36hf")
 
 [node name="RandomScreamer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=285993502 instance=ExtResource("14_wpftp")]
 
+[node name="DoorKnocking" type="AudioStreamPlayer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=588013170]
+unique_name_in_owner = true
+stream = ExtResource("15_dwmb0")
+
+[node name="DoorKnockingAngry" type="AudioStreamPlayer" parent="TrainGroup/Outside/Body/PeepholeHUD" unique_id=243403344]
+unique_name_in_owner = true
+stream = ExtResource("16_fxqph")
+volume_db = -2.0
+
 [node name="Inside" type="Node2D" parent="TrainGroup" unique_id=524496893]
 unique_name_in_owner = true
 
@@ -945,6 +957,12 @@ position = Vector2(124.5, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainGroup/Inside/StaticBody2D3" unique_id=1021861954]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_6kx4d")
+
+[node name="DoorOpeningSound" type="AudioStreamPlayer" parent="TrainGroup/Inside" unique_id=200546024]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("19_qp37i")
+bus = &"SFX"
 
 [node name="NPC" type="Node2D" parent="TrainGroup" unique_id=318911584]
 position = Vector2(-100, 0)

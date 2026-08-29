@@ -5,6 +5,7 @@ signal door_access_changed(is_accesible: bool)
 signal peephole_opened()
 signal npc_invited()
 signal npc_raged()
+signal npc_arrived()
 signal day_phase_changed(phase: DayPhase)
 signal day_count_changed()
 signal game_over(win: bool)
@@ -43,7 +44,7 @@ func reset_game() -> void:
 
 func next_day() -> void:
 	has_sleeping_npc = false
-	current_day += 1
 	current_phase = DayPhase.Day
+	current_day += 1
 	door_access_changed.emit(false)
 	print("Day ", current_day)
