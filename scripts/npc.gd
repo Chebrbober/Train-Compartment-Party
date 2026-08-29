@@ -30,6 +30,7 @@ func update() -> void:
 	setup_body_bundle(body_bundle)
 
 	GameEvents.has_bad_npc = (npc_type == Type.Bad)
+	print("Npc is ", npc_type)
 
 func setup_body_bundle(bundle: BodyBundle) -> void:
 	head.texture = bundle.head

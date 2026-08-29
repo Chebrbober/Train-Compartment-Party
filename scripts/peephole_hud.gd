@@ -24,7 +24,7 @@ func lock() -> void:
 	buttons.visible = false
 
 func _on_appeared() -> void:
-	if randf() < 0.5:
+	if randf() < 0.1:
 		random_screamer.play()
 		print("povezlo")
 	else:

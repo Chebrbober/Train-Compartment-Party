@@ -60,7 +60,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1.1920929e-07, 11.000001)]
+"values": [Vector2(-1, 11)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -305,7 +305,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1.1920929e-07, 11.000001)]
+"values": [Vector2(-1, 11)]
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
@@ -480,7 +480,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-1.1920929e-07, 11.000001), Vector2(-1, 11)]
+"values": [Vector2(-1, 11), Vector2(-1, 11)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -531,7 +531,7 @@ position = Vector2(2, 11)
 texture = ExtResource("2_fjrip")
 
 [node name="RightLeg" type="Sprite2D" parent="Body" unique_id=1236576035]
-position = Vector2(-1.1920929e-07, 11.000001)
+position = Vector2(-1, 11)
 texture = ExtResource("3_smehm")
 
 [node name="Torso" type="Sprite2D" parent="Body" unique_id=661390717]

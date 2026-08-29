@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var shader_resource: ShaderMaterial
-@export var night_preview_duration: float = 3.0
+@export var night_preview_duration: float = 5.0
 @onready var compartment = $Compartment
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var peephole_camera: Camera2D = %PeepholeCamera
@@ -86,19 +86,20 @@ func stop_peeping() -> void:
 func trigger_sleep_sequence() -> void:
 	TransitionScene.transition_to("", func() -> void:
 		compartment.player_sleep()
-		if GameEvents.has_sleeping_npc:
+		if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
 			print("Safe: You are sleeping with an NPC.")
 		else:
-			print("Danger: Sleeping alone! Killer can appear.")
+			compartment.eliminate_the_player()
+			is_transitioning = false
 
 		GameEvents.current_phase = GameEvents.DayPhase.Night
 	)
 	await get_tree().create_timer(night_preview_duration).timeout
-	if GameEvents.has_sleeping_npc:
+	if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
 		TransitionScene.transition_to("", func() -> void:
 			GameEvents.next_day()
 			compartment.move_player_near_bed()
 			is_transitioning = false
-		)
+	)
 	else:
-		is_transitioning = false
+		print("Game Over trigged!")

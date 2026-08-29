@@ -966,7 +966,7 @@ texture = ExtResource("20_gmphw")
 
 [node name="RightLeg" type="Sprite2D" parent="TrainGroup/NPC/Body" unique_id=1851398459]
 unique_name_in_owner = true
-position = Vector2(-1.1920929e-07, 11.000001)
+position = Vector2(-1, 11)
 texture = ExtResource("21_7iku6")
 
 [node name="Torso" type="Sprite2D" parent="TrainGroup/NPC/Body" unique_id=161312830]

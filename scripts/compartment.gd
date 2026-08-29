@@ -7,6 +7,7 @@ extends Node
 @onready var stairs_interactable: Interactable = %StairsInteractable
 @onready var bed_interactable: Interactable = %BedInteractable
 @onready var sleeping_npc: Sprite2D = $SleepingNPC
+@onready var killer: Node2D = $Killer
 
 func _ready() -> void:
 	GameEvents.door_access_changed.connect(_on_door_access_changed)
@@ -38,6 +39,9 @@ func _on_day_phase_changed(phase: GameEvents.DayPhase) -> void:
 		bed_interactable.monitoring = true
 	else:
 		bed_interactable.monitoring = false
+
+func eliminate_the_player() -> void:
+	killer.appear_and_kill()
 
 func _on_day_count_changed() -> void:
 	bed_interactable.monitoring = false

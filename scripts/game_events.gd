@@ -7,6 +7,7 @@ signal npc_invited()
 signal npc_raged()
 signal day_phase_changed(phase: DayPhase)
 signal day_count_changed()
+signal game_over(win: bool)
 
 @export var current_train_state: TrainState:
 	set(v):
@@ -30,7 +31,6 @@ var current_phase: DayPhase = DayPhase.Day:
 var has_sleeping_npc: bool = false
 var has_bad_npc: bool = false
 
-
 func reset_game() -> void:
 	current_train_state = TrainState.Corridor
 	current_phase = DayPhase.Day
@@ -38,6 +38,7 @@ func reset_game() -> void:
 	has_sleeping_npc = false
 
 func next_day() -> void:
+	has_sleeping_npc = false
 	current_day += 1
 	current_phase = DayPhase.Day
-	has_sleeping_npc = false
+	door_access_changed.emit(false)
