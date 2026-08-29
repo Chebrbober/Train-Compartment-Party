@@ -40,9 +40,7 @@ func _on_day_timeout() -> void:
 
 func _on_bedtime_timeout() -> void:
 	print("Night has already began...")
-	TransitionScene.transition_to("", func() -> void:
-		GameEvents.current_phase = GameEvents.DayPhase.Night
-	)
+	GameEvents.current_phase = GameEvents.DayPhase.Night
 
 func _on_day_phase_changed(phase: GameEvents.DayPhase) -> void:
 	if phase == GameEvents.DayPhase.Night:

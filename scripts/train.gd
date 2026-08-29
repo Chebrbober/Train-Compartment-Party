@@ -20,6 +20,7 @@ func _ready() -> void:
 	GameEvents.train_state_changed.connect(update_visibility)
 	GameEvents.npc_raged.connect(stop_peeping)
 	GameEvents.npc_invited.connect(stop_peeping)
+	GameEvents.day_phase_changed.connect(auto_sleep)
 
 func update_visibility(state) -> void:
 	if state == GameEvents.TrainState.Compartment:
@@ -84,15 +85,15 @@ func stop_peeping() -> void:
 	player.set_physics_process(true)
 
 func trigger_sleep_sequence() -> void:
+	is_transitioning = true
+
 	TransitionScene.transition_to("", func() -> void:
 		compartment.player_sleep()
 		if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
 			print("Safe: You are sleeping with an NPC.")
 		else:
+			GameEvents.current_train_state = GameEvents.TrainState.Compartment
 			compartment.eliminate_the_player()
-			is_transitioning = false
-
-		GameEvents.current_phase = GameEvents.DayPhase.Night
 	)
 	await get_tree().create_timer(night_preview_duration).timeout
 	if GameEvents.has_sleeping_npc and !GameEvents.has_bad_npc:
@@ -106,3 +107,8 @@ func trigger_sleep_sequence() -> void:
 	)
 	else:
 		print("Game Over trigged! You loose!")
+
+func auto_sleep(phase: GameEvents.DayPhase) -> void:
+	if phase == GameEvents.DayPhase.Night and !is_transitioning:
+		is_transitioning = true
+		trigger_sleep_sequence()
